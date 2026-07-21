@@ -402,7 +402,7 @@ SOC 值班长、自动化工程师、分析师（执行确认）。
 | R2 剧本编排 | Playbook 定义、试跑、绑定触发条件 | Playbooks |
 | R3 半自动执行 | 逐步确认参数后执行 | Playbook Run、Action Connectors |
 | R4 自主执行舱 | 仅白名单低风险步骤可自动；高风险进审批 | Approvals、HITL |
-| R5 协同通道 | 工单/通知台账与 Webhook；**KN 六 Bot 出站 + IM 回流** | Tickets、Notifications、`im/actions` |
+| R5 协同通道 | 工单/通知台账与 Webhook；**IM 六 Bot 出站与回流** | Tickets、Notifications、`im/actions` |
 | R6 外部 SOAR | Shuffle/TheHive 适配状态与同步 | SmartOps SOAR |
 
 ### 9.5 自主等级（产品定义）
@@ -425,7 +425,7 @@ SOC 值班长、自动化工程师、分析师（执行确认）。
 
 > 运营契约见 `im-closed-loop-framework.md`；本小节**指挥舱里去哪看状态**。
 
-#### 出站体验（KN）
+#### 出站体验（IM）
 
 告警消息包含：路由标题、Incident ID、证据摘要、**Inline 按钮**（认领 / 建单 / 误报 / 已修复 / 关闭 / 升级）、SOC 深链提示。六 Bot 文案结构一致，仅路由与 `@bot` 不同。
 
@@ -436,7 +436,7 @@ SOC 值班长、自动化工程师、分析师（执行确认）。
 | Incident 状态 / Owner / 时间线 | **Detect → 调查台** `#/detect` | 点开对应 Incident |
 | 工单状态 / sync | **Respond → 编排处置** `#/respond-ops` | Tickets 台账 |
 | Finding 生命周期 | **Identify → 风险台账** `#/identify-findings` | 按 `code-audit/*` / project 筛选 |
-| 通知是否发出 | Respond 通知台账 / API `notifications` | `kn_chat_sent:{route}` |
+| 通知是否发出 | Respond 通知台账 / API `notifications` | `im_sent:{route}` |
 | IM 动作流水 | API `GET /api/v1/soc/im/actions?incident_id=` | UI 专页为后续增强（当前 API 可审计） |
 
 #### 状态对照（IM 按钮 → 台账）
